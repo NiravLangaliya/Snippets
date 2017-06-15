@@ -1,0 +1,6 @@
+##grep pattern and return rows
+BEFORE=2
+AFTER=3
+FILE_PATTERN= < File pattern >
+PATTERN= < serach pattern > 
+for FILE in in `ls $FILE_PATTERN` ; do echo $FILE ; for i in $(grep -n $PATTERN $FILE | sed -e 's/\:.*//') ;  do head -n $(($AFTER+$i)) $FILE | tail -n $(($AFTER+$BEFORE+1)) ;  done ; done;
